@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<ruleset name="WebPresence"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+    <description>
+        Custom ruleset.
+    </description>
+	<exclude-pattern>.*com/neustar/registry/webpresence/iam/domain/Q.*.java</exclude-pattern>
+	<exclude-pattern>.*org/hibernate/envers/Q.*.java</exclude-pattern>
+	<exclude-pattern>.*com/neustar/registry/webpresence/iam/service/mapper/.*Impl.java</exclude-pattern>
+    <rule ref="rulesets/java/basic.xml"/>
+    <rule ref="rulesets/java/braces.xml"/>
+
+    <rule ref="rulesets/java/design.xml">
+        <exclude name="UseVarargs"/>
+        <exclude name="ConfusingTernary"/>
+        <exclude name="SimplifyBooleanReturns"/>
+        <exclude name="GodClass"/>
+        <!-- required only when using i18n -->
+        <exclude name="UseLocaleWithCaseConversions"/>
+    </rule>
+
+    <rule ref="rulesets/java/empty.xml"/>
+    <rule ref="rulesets/java/imports.xml"/>
+
+    <rule ref="rulesets/java/javabeans.xml">
+        <exclude name="BeanMembersShouldSerialize"/>
+    </rule>
+
+    <rule ref="rulesets/java/junit.xml"/>
+
+    <rule ref="rulesets/java/logging-java.xml">
+        <!-- excluded because rule does not work -->
+        <exclude name="GuardLogStatementJavaUtil"/>
+        <!-- excluded because of false positives or bugs in this rule -->
+        <exclude name="InvalidSlf4jMessageFormat"/>
+    </rule>
+
+    <rule ref="rulesets/java/naming.xml">
+        <exclude name="LongVariable"/>
+        <exclude name="ShortVariable"/>
+        <exclude name="ShortClassName"/>
+    </rule>
+
+    <rule ref="rulesets/java/optimizations.xml">
+        <exclude name="LocalVariableCouldBeFinal"/>
+        <exclude name="AvoidInstantiatingObjectsInLoops"/>
+    </rule>
+
+    <rule ref="rulesets/java/strictexception.xml"/>
+
+    <rule ref="rulesets/java/strings.xml">
+    </rule>
+    <rule ref="rulesets/java/strings.xml/AvoidDuplicateLiterals">
+        <properties>
+            <property name="exceptionList" value="enter,exit"/>
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/java/sunsecure.xml"/>
+    <rule ref="rulesets/java/unnecessary.xml"/>
+    <rule ref="rulesets/java/unusedcode.xml"/>
+
+</ruleset>

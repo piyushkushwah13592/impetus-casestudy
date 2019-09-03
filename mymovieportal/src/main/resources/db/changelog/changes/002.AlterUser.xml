@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<changeSet id="1" author="piyushkushwah">
+		<addColumn tableName="user">
+			<column name="user_city" type="varchar(20)" />
+		</addColumn>
+		<rollback>
+			<dropColumn columnName="user_city" tableName="user" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="2" author="piyushkushwah">
+		<update tableName="user">
+			<column name="user_city">Indore</column>
+			<where> user_id = '1'</where>
+		</update>
+		<rollback>
+			<update tableName="user">
+				<column name="user_city">Indore</column>
+				<where> user_id = '1'</where>
+			</update>
+		</rollback>
+	</changeSet>
+
+	<changeSet id="3" author="piyushkushwah">
+		<update tableName="user">
+			<column name="user_city">Pune</column>
+			<where> user_id = '2'</where>
+		</update>
+		<rollback>
+			<update tableName="user">
+				<column name="user_city">Pune</column>
+				<where> user_id = '2'</where>
+			</update>
+		</rollback>
+	</changeSet>
+
+
+	<!-- insert into citytheatre -->
+
+	<changeSet id="4" author="piyushkushwah">
+		<insert tableName="citytheatre">
+			<column name="ct_theatre_id">1</column>
+			<column name="ct_city_id">3</column>
+		</insert>
+		<rollback>
+			<delete tableName="citytheatre">
+				<where>ct_theatre_id='1' and ct_city_id='3'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+	<changeSet id="5" author="piyushkushwah">
+		<insert tableName="citytheatre">
+			<column name="ct_theatre_id">2</column>
+			<column name="ct_city_id">3</column>
+		</insert>
+		<rollback>
+			<delete tableName="citytheatre">
+				<where>ct_theatre_id='2' and ct_city_id='3'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<!-- insert into movietheatre -->
+
+	<changeSet id="6" author="piyushkushwah">
+		<insert tableName="movietheatre">
+			<column name="mt_movie_id">3</column>
+			<column name="mt_theatre_id">2</column>
+			<column name="mt_showtime_id">2</column>
+			<column name="discount">5</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movietheatre">
+				<where>mt_movie_id='3' and mt_theatre_id='2' and
+					mt_showtime_id='2'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+
+	<changeSet id="7" author="piyushkushwah">
+		<insert tableName="movietheatre">
+			<column name="mt_movie_id">2</column>
+			<column name="mt_theatre_id">1</column>
+			<column name="mt_showtime_id">2</column>
+			<column name="discount">5</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movietheatre">
+				<where>mt_movie_id='2' and mt_theatre_id='1' and
+					mt_showtime_id='2'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+	<!-- insert city for AdminController testDeleteCity() -->
+
+	<changeSet id="8" author="piyushkushwah">
+		<insert tableName="city">
+			<column name="city_name">IntDelCity</column>
+			<column name="city_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="city">
+				<where>city_name='IntDelCity'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+	<!-- insert theatre for AdminController testDeleteTheatre() -->
+
+	<changeSet id="9" author="piyushkushwah">
+		<insert tableName="theatre">
+			<column name="theatre_name">IntDelTheatre</column>
+			<column name="theatre_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="theatre">
+				<where>theatre_name='IntDelTheatre'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+	<!-- insert movie for AdminController testMovieTheatre -->
+
+	<changeSet id="10" author="piyushkushwah">
+		<insert tableName="movie">
+			<column name="movie_name">IntDelMovie</column>
+			<column name="movie_price">250</column>
+			<column name="movie_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movie">
+				<where>movie_name='IntDelMovie'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+	<!-- insert movie for MovieController testMovieDeleteOperationThroughCSV() -->
+
+	<changeSet id="11" author="piyushkushwah">
+		<insert tableName="movie">
+			<column name="movie_name">IntDeleteCsv</column>
+			<column name="movie_price">300</column>
+			<column name="movie_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movie">
+				<where>movie_name='IntDeleteCsv'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+	<!-- insert movie for MovieController testMovieDeleteOperationThroughXML() -->
+
+	<changeSet id="12" author="piyushkushwah">
+		<insert tableName="movie">
+			<column name="movie_name">IntDeleteXml</column>
+			<column name="movie_price">300</column>
+			<column name="movie_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movie">
+				<where>movie_name='IntDeleteXml'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+	
+	<changeSet id="13" author="piyushkushwah">
+        <addUniqueConstraint columnNames="showtime_time"
+            tableName="showtime" constraintName="showtime_time_unique" />
+    </changeSet>
+
+</databaseChangeLog>

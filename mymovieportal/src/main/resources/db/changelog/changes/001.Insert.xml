@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<!-- Inserting in "user" table -->
+
+	<changeSet id="1" author="piyushkushwah">
+		<insert tableName="user">
+			<column name="user_name">Piyush</column>
+			<column name="user_lastname">Kushwah</column>
+			<column name="user_email">piyushkushwah13592@gmail.com</column>
+			<column name="user_contact">9009897989</column>
+			<column name="user_password">MXFxUVFR</column>
+			<column name="user_role">admin</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="user">
+				<where>user_email='piyushkushwah13592@gmail.com'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="2" author="piyushkushwah">
+		<insert tableName="user">
+			<column name="user_name">Rahul</column>
+			<column name="user_lastname">Sharma</column>
+			<column name="user_email">rs.sharma950@gmail.com</column>
+			<column name="user_contact">1234567890</column>
+			<column name="user_password">MXFxUVFR</column>
+			<column name="user_role">user</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="user">
+				<where>user_email='rs.sharma950@gmail.com'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<!-- Inserting in "city" table -->
+
+	<changeSet id="3" author="piyushkushwah">
+		<insert tableName="city">
+			<column name="city_name">Indore</column>
+			<column name="city_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="city">
+				<where>city_name='Indore'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="4" author="piyushkushwah">
+		<insert tableName="city">
+			<column name="city_name">Pune</column>
+			<column name="city_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="city">
+				<where>city_name='Pune'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="5" author="piyushkushwah">
+		<insert tableName="city">
+			<column name="city_name">Mumbai</column>
+			<column name="city_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="city">
+				<where>city_name='Mumbai'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+
+	<!-- Inserting in "movie" table -->
+
+	<changeSet id="6" author="piyushkushwah">
+		<insert tableName="movie">
+			<column name="movie_name">DDLJ</column>
+			<column name="movie_price">150</column>
+			<column name="movie_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movie">
+				<where>movie_name='DDLJ'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="7" author="piyushkushwah">
+		<insert tableName="movie">
+			<column name="movie_name">RHTDM</column>
+			<column name="movie_price">170</column>
+			<column name="movie_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movie">
+				<where>movie_name='RHTDM'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="8" author="piyushkushwah">
+		<insert tableName="movie">
+			<column name="movie_name">GADAR</column>
+			<column name="movie_price">300</column>
+			<column name="movie_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movie">
+				<where>movie_name='GADAR'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<!-- Inserting in "theatre" table -->
+
+	<changeSet id="9" author="piyushkushwah">
+		<insert tableName="theatre">
+			<column name="theatre_name">Inox</column>
+			<column name="theatre_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="theatre">
+				<where>theatre_name='Inox'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+
+	<changeSet id="10" author="piyushkushwah">
+		<insert tableName="theatre">
+			<column name="theatre_name">PVR</column>
+			<column name="theatre_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="theatre">
+				<where>theatre_name='PVR'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="11" author="piyushkushwah">
+		<insert tableName="theatre">
+			<column name="theatre_name">Carnival</column>
+			<column name="theatre_status">active</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="theatre">
+				<where>theatre_name='Carnival'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<!-- Inserting in "showtime" table -->
+
+	<changeSet id="12" author="piyushkushwah">
+		<insert tableName="showtime">
+			<column name="showtime_time">2018-04-16 18:00:00</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="showtime">
+				<where>showtime_time='2018-04-16
+					18:00:00'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="13" author="piyushkushwah">
+		<insert tableName="showtime">
+			<column name="showtime_time">2018-04-16 21:00:00</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="showtime">
+				<where>showtime_time='2018-04-16 21:00:00'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+
+	<changeSet id="14" author="piyushkushwah">
+		<insert tableName="showtime">
+			<column name="showtime_time">2018-04-16 19:00:00</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="showtime">
+				<where>showtime_time='2018-04-16 19:00:00'</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<!-- Inserting in "movietheatre" table -->
+
+	<changeSet id="15" author="piyushkushwah">
+		<insert tableName="movietheatre">
+			<column name="mt_movie_id">1</column>
+			<column name="mt_theatre_id">1</column>
+			<column name="mt_showtime_id">1</column>
+			<column name="discount">10</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movietheatre">
+				<where>mt_movie_id='1' and mt_theatre_id='1' and
+					mt_showtime_id='1'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="16" author="piyushkushwah">
+		<insert tableName="movietheatre">
+			<column name="mt_movie_id">1</column>
+			<column name="mt_theatre_id">2</column>
+			<column name="mt_showtime_id">2</column>
+			<column name="discount">5</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movietheatre">
+				<where>mt_movie_id='1' and mt_theatre_id='2' and
+					mt_showtime_id='2'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="17" author="piyushkushwah">
+		<insert tableName="movietheatre">
+			<column name="mt_movie_id">2</column>
+			<column name="mt_theatre_id">2</column>
+			<column name="mt_showtime_id">2</column>
+			<column name="discount">5</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movietheatre">
+				<where>mt_movie_id='2' and mt_theatre_id='2' and
+					mt_showtime_id='2'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="18" author="piyushkushwah">
+		<insert tableName="movietheatre">
+			<column name="mt_movie_id">1</column>
+			<column name="mt_theatre_id">1</column>
+			<column name="mt_showtime_id">2</column>
+			<column name="discount">5</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movietheatre">
+				<where>mt_movie_id='1' and mt_theatre_id='1' and
+					mt_showtime_id='2'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="19" author="piyushkushwah">
+		<insert tableName="movietheatre">
+			<column name="mt_movie_id">3</column>
+			<column name="mt_theatre_id">1</column>
+			<column name="mt_showtime_id">2</column>
+			<column name="discount">5</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movietheatre">
+				<where>mt_movie_id='3' and mt_theatre_id='1' and
+					mt_showtime_id='2'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+
+
+
+	<changeSet id="20" author="piyushkushwah">
+		<insert tableName="movietheatre">
+			<column name="mt_movie_id">2</column>
+			<column name="mt_theatre_id">3</column>
+			<column name="mt_showtime_id">2</column>
+			<column name="discount">5</column>
+		</insert>
+
+		<rollback>
+			<delete tableName="movietheatre">
+				<where>mt_movie_id='2' and mt_theatre_id='3' and
+					mt_showtime_id='2'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<!-- Inserting in "citytheatre" table -->
+
+	<changeSet id="21" author="piyushkushwah">
+		<insert tableName="citytheatre">
+			<column name="ct_theatre_id">1</column>
+			<column name="ct_city_id">1</column>
+		</insert>
+		<rollback>
+			<delete tableName="citytheatre">
+				<where>ct_theatre_id='1' and ct_city_id='1'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="22" author="piyushkushwah">
+		<insert tableName="citytheatre">
+			<column name="ct_theatre_id">2</column>
+			<column name="ct_city_id">2</column>
+		</insert>
+		<rollback>
+			<delete tableName="citytheatre">
+				<where>ct_theatre_id='2' and ct_city_id='2'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="23" author="piyushkushwah">
+		<insert tableName="citytheatre">
+			<column name="ct_theatre_id">2</column>
+			<column name="ct_city_id">1</column>
+		</insert>
+		<rollback>
+			<delete tableName="citytheatre">
+				<where>ct_theatre_id='2' and ct_city_id='1'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="24" author="piyushkushwah">
+		<insert tableName="citytheatre">
+			<column name="ct_theatre_id">3</column>
+			<column name="ct_city_id">1</column>
+		</insert>
+		<rollback>
+			<delete tableName="citytheatre">
+				<where>ct_theatre_id='3' and ct_city_id='1'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="25" author="piyushkushwah">
+		<insert tableName="citytheatre">
+			<column name="ct_theatre_id">1</column>
+			<column name="ct_city_id">2</column>
+		</insert>
+		<rollback>
+			<delete tableName="citytheatre">
+				<where>ct_theatre_id='1' and ct_city_id='2'
+				</where>
+			</delete>
+		</rollback>
+	</changeSet>
+
+
+
+
+</databaseChangeLog>

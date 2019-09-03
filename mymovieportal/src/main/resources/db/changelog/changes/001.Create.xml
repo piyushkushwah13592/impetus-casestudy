@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<changeSet id="1" author="piyushkushwah">
+		<createTable tableName="user">
+			<column name="user_id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="user_name" type="varchar(20)" />
+			<column name="user_lastname" type="varchar(20)" />
+			<column name="user_email" type="varchar(30)">
+				<constraints unique="true" />
+			</column>
+			<column name="user_contact" type="varchar(20)">
+				<constraints unique="true" />
+			</column>
+			<column name="user_password" type="varchar(10)" />
+			<column name="user_role" type="varchar(10)" />
+		</createTable>
+		<rollback>
+			<dropTable tableName="user" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="2" author="piyushkushwah">
+		<createTable tableName="movie">
+			<column name="movie_id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="movie_name" type="varchar(20)"></column>
+			<column name="movie_price" type="varchar(20)"></column>
+			<column name="movie_status" type="varchar(10)"></column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="movie" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="3" author="piyushkushwah">
+		<createTable tableName="theatre">
+			<column name="theatre_id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="theatre_name" type="varchar(20)"></column>
+			<column name="theatre_status" type="varchar(10)"></column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="theatre" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="4" author="piyushkushwah">
+		<createTable tableName="movietheatre">
+			<column name="movietheatre_id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="mt_movie_id" type="int"></column>
+			<column name="mt_theatre_id" type="int"></column>
+			<column name="mt_showtime_id" type="int"></column>
+			<column name="discount" type="varchar(20)"></column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="movietheatre" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="5" author="piyushkushwah">
+		<createTable tableName="showtime">
+			<column name="showtime_id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="showtime_time" type="DATETIME"></column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="showtime" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="6" author="piyushkushwah">
+		<addForeignKeyConstraint baseColumnNames="mt_movie_id"
+			baseTableName="movietheatre" constraintName="fk_movietheatre_mt_movie_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO 
+		ACTION" referencedColumnNames="movie_id"
+			referencedTableName="movie" />
+		<addForeignKeyConstraint baseColumnNames="mt_theatre_id"
+			baseTableName="movietheatre" constraintName="fk_movietheatre_mt_theatre_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO 
+		ACTION" referencedColumnNames="theatre_id"
+			referencedTableName="theatre" />
+		<addForeignKeyConstraint baseColumnNames="mt_showtime_id"
+			baseTableName="movietheatre" constraintName="fk_movietheatre_mt_showtime_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="showtime_id"
+			referencedTableName="showtime" />
+		<rollback>
+			<dropForeignKeyConstraint baseTableName="movietheatre"
+				constraintName="fk_movietheatre_mt_movie_id" />
+			<dropForeignKeyConstraint baseTableName="movietheatre"
+				constraintName="fk_movietheatre_mt_theatre_id" />
+			<dropForeignKeyConstraint baseTableName="movietheatre"
+				constraintName="fk_movietheatre_mt_showtime_id" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="7" author="piyushkushwah">
+		<createTable tableName="city">
+			<column name="city_id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="city_name" type="varchar(20)"></column>
+			<column name="city_status" type="varchar(10)"></column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="city" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="8" author="piyushkushwah">
+		<createTable tableName="citytheatre">
+			<column name="citytheatre_id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="ct_theatre_id" type="int">
+			</column>
+			<column name="ct_city_id" type="int">
+			</column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="citytheatre" />
+		</rollback>
+	</changeSet>
+
+	<changeSet id="9" author="piyushkushwah">
+		<addForeignKeyConstraint baseColumnNames="ct_theatre_id"
+			baseTableName="citytheatre" constraintName="fk_citytheatre_ct_theatre_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO 
+		ACTION" referencedColumnNames="theatre_id"
+			referencedTableName="theatre" />
+		<addForeignKeyConstraint baseColumnNames="ct_city_id"
+			baseTableName="citytheatre" constraintName="fk_citytheatre_ct_city_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="city_id"
+			referencedTableName="city" />
+		<rollback>
+			<dropForeignKeyConstraint baseTableName="citytheatre"
+				constraintName="fk_citytheatre_ct_theatre_id" />
+			<dropForeignKeyConstraint baseTableName="citytheatre"
+				constraintName="fk_citytheatre_ct_city_id" />
+		</rollback>
+	</changeSet>
+
+
+	<changeSet id="10" author="piyushkushwah">
+		<createTable tableName="seatbooking">
+			<column name="seatbooking_id" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="sb_city_id" type="int"></column>
+			<column name="sb_movie_id" type="int"></column>
+			<column name="sb_theatre_id" type="int"></column>
+			<column name="seat_name" type="varchar(10)"></column>
+			<column name="sb_showtime" type="varchar(10)"></column>
+			<column name="sb_date" type="varchar(10)"></column>
+			<column name="status" type="varchar(10)"></column>
+			<column name="sb_user_id" type="int"></column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="seatbooking" />
+		</rollback>
+	</changeSet>
+
+	<changeSet id="11" author="piyushkushwah">
+		<addForeignKeyConstraint baseColumnNames="sb_movie_id"
+			baseTableName="seatbooking" constraintName="fk_seatbooking_sb_movie_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO 
+		ACTION" referencedColumnNames="movie_id"
+			referencedTableName="movie" />
+		<addForeignKeyConstraint baseColumnNames="sb_theatre_id"
+			baseTableName="seatbooking" constraintName="fk_seatbooking_sb_theatre_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO 
+		ACTION" referencedColumnNames="theatre_id"
+			referencedTableName="theatre" />
+		<addForeignKeyConstraint baseColumnNames="sb_city_id"
+			baseTableName="seatbooking" constraintName="fk_seatbooking_sb_city_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="city_id"
+			referencedTableName="city" />
+		<addForeignKeyConstraint baseColumnNames="sb_user_id"
+			baseTableName="seatbooking" constraintName="fk_seatbooking_sb_user_id"
+			deferrable="false" initiallyDeferred="false" onDelete="NO ACTION"
+			onUpdate="NO ACTION" referencedColumnNames="user_id"
+			referencedTableName="user" />
+		<rollback>
+			<dropForeignKeyConstraint baseTableName="seatbooking"
+				constraintName="fk_seatbooking_sb_movie_id" />
+			<dropForeignKeyConstraint baseTableName="seatbooking"
+				constraintName="fk_seatbooking_sb_theatre_id" />
+			<dropForeignKeyConstraint baseTableName="seatbooking"
+				constraintName="fk_seatbooking_sb_city_id" />
+			<dropForeignKeyConstraint baseTableName="seatbooking"
+				constraintName="fk_seatbooking_sb_user_id" />
+		</rollback>
+	</changeSet>
+	
+	<changeSet id="12" author="piyushkushwah">
+		<addUniqueConstraint columnNames="ct_theatre_id,ct_city_id"
+			tableName="citytheatre" constraintName="citytheatre_compositeprimarykey" />
+	</changeSet>
+	
+	<changeSet id="13" author="piyushkushwah">
+		<addUniqueConstraint columnNames="mt_movie_id,mt_theatre_id,mt_showtime_id"
+			tableName="movietheatre" constraintName="movietheatre_compositeprimarykey" />
+	</changeSet>
+	
+	<changeSet id="14" author="piyushkushwah">
+        <addUniqueConstraint columnNames="sb_city_id,sb_movie_id,sb_theatre_id,sb_showtime,seat_name,sb_date,status"
+            tableName="seatbooking" constraintName="seatbooking_compositeprimarykey" />
+    </changeSet>
+</databaseChangeLog>
